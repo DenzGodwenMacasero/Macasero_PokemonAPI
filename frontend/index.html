@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Pokemon Manager</h1>
+            <p>Manage Pokemon using your REST API</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <div id="status-message"></div>
+
+        <section class="form-section">
+            <h2 id="form-title">Add Pokemon</h2>
+
+            <form id="pokemon-form">
+
+                <input type="hidden" id="pokemon-id">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Enter Pokemon name">
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Type</label>
+                    <input type="text" id="type" placeholder="Enter Pokemon type">
+                </div>
+
+                <div class="form-row">
+
+                    <div class="form-group">
+                        <label for="level">Level</label>
+                        <input type="number" id="level" placeholder="Level">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hp">HP</label>
+                        <input type="number" id="hp" placeholder="HP">
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="image-url">Image URL</label>
+                    <input type="url" id="image-url" placeholder="Enter Pokemon image URL">
+                </div>
+
+                <div class="form-buttons">
+                    <button type="submit" id="submit-button">Add Pokemon</button>
+                    <button type="button" id="cancel-button" class="secondary-button" hidden>Cancel</button>
+                </div>
+
+            </form>
+        </section>
+
+        <section class="list-section">
+
+            <div class="section-header">
+                <h2>Pokemon List</h2>
+                <button type="button" id="refresh-button">Refresh</button>
+            </div>
+
+            <div id="loading" class="loading" hidden>
+                Loading Pokemon...
+            </div>
+
+            <div id="pokemon-list" class="pokemon-grid"></div>
+
+        </section>
+
+        <section class="details-section">
+
+            <h2>Pokemon Details</h2>
+
+            <div id="pokemon-details">
+                <p>Select a Pokemon to view its details.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Pokemon Manager &copy; 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

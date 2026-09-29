@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from database import get_db, init_db
 
 app = Flask(__name__)
+CORS(app)
 
 init_db()
 
@@ -46,10 +48,16 @@ def create_pokemon():
 
     cursor = conn.execute(
         """
-        INSERT INTO pokemon (name, type, level, hp)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO pokemon (name, type, level, hp, image_url)
+        VALUES (?, ?, ?, ?, ?)
         """,
-        (data["name"], data["type"], data["level"], data["hp"])
+        (
+            data["name"],
+            data["type"],
+            data["level"],
+            data["hp"],
+            data.get("image_url", "")
+        )
     )
 
     conn.commit()
@@ -93,7 +101,7 @@ def update_pokemon(pokemon_id):
     conn.execute(
         """
         UPDATE pokemon
-        SET name = ?, type = ?, level = ?, hp = ?
+        SET name = ?, type = ?, level = ?, hp = ?, image_url = ?
         WHERE id = ?
         """,
         (
@@ -101,6 +109,7 @@ def update_pokemon(pokemon_id):
             data["type"],
             data["level"],
             data["hp"],
+            data.get("image_url", ""),
             pokemon_id
         )
     )
